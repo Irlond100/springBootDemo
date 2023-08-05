@@ -1,4 +1,4 @@
-package ru.netology.springbootdemo;
+package ru.netology.springbootdemo.model;
 
 public class DevProfile implements SystemProfile {
     @Override

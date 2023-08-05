@@ -1,8 +1,9 @@
-package ru.netology.springbootdemo;
+package ru.netology.springbootdemo.model.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.netology.springbootdemo.model.SystemProfile;
 
 @RestController
 @RequestMapping("/")
