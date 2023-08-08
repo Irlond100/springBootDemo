@@ -1,6 +1,8 @@
 package ru.netology.springbootdemo.config;
 
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.netology.springbootdemo.model.DevProfile;
@@ -11,11 +13,16 @@ import ru.netology.springbootdemo.model.SystemProfile;
 public class Config {
 
     @Bean
-    public SystemProfile systemProfile() {
-        if (Boolean.parseBoolean(System.getProperty("netology.profile.dev"))) {
-            return new DevProfile();
-        } else {
-            return new ProductionProfile();
-        }
+    @ConditionalOnProperty(name = "netology.profile.dev", havingValue = "true")
+    public SystemProfile devProfile() {
+        return new DevProfile();
     }
+
+    @Bean
+    @ConditionalOnProperty(name = "netology.profile.dev", havingValue = "false")
+    public SystemProfile productionProfile() {
+        return new ProductionProfile();
+    }
+
 }
+
